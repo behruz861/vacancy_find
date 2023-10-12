@@ -1,0 +1,39 @@
+{% extends 'vacancies/base.html' %}
+
+{% block content %}
+  <h2>Vacancies</h2>
+
+  <form method="get" action="{% url 'vacancy_list' %}">
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company">
+    <label for="programming_language">Programming Language:</label>
+    <input type="text" id="programming_language" name="programming_language">
+    <label for="status">Status:</label>
+    <select name="status" id="status">
+      <option value="Senior">Senior</option>
+      <option value="Middle">Middle</option>
+      <option value="Junior">Junior</option>
+    </select>
+    <button type="submit">Search</button>
+  </form>
+
+  {% for vacancy in page_obj %}
+    <div>
+      <h3>{{ vacancy.company }}</h3>
+      <p>Programming Language: {{ vacancy.programming_language }}</p>
+      <p>Status: {{ vacancy.status }}</p>
+      <a href="{% url 'vacancy_detail' vacancy.id %}">View Details</a>
+    </div>
+  {% empty %}
+    <p>No vacancies found.</p>
+  {% endfor %}
+  <div class="paginator">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page.obj.previous_page_number }}">Previous</a>
+    {% endif %}
+      <span class="current-page">{{ page_obj.number }}</span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">Next</a>
+    {% endif %}
+  </div>
+{% endblock %}

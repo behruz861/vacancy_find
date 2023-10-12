@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vacancy Site</title>
+</head>
+<body>
+  <header>
+    <h1>Vacancy Site</h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'vacancy_list' %}">Vacancies</a></li>
+      </ul>
+    </nav>
+  </header>
+<main>
+  {% block content %}
+  {% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'vacancies/base.html' %}
+
+{% block content %}
+    <h2>Vacancy Details</h2>
+
+    <div>
+      <h3>{{ vacancy.company }}</h3>
+      <p>Programming Language: {{ vacancy.programming_language }}</p>
+      <p>Status: {{ vacancy.status }}</p>
+    </div>
+<a href="{% url 'vacancy_list' %}">Back to vacancies</a>
+{% endblock %}
